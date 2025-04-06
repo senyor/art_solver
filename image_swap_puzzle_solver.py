@@ -1,9 +1,9 @@
+import os
+import random
 import shutil
 import tkinter as tk
-# from tkinter import filedialog
+
 from PIL import Image, ImageTk
-import random
-import os
 
 TILE_SIZE = 200
 GRID_SIZE = 4
@@ -26,15 +26,10 @@ class ImageSwapPuzzleGUI:
         self.canvas.bind("<B1-Motion>", self.do_drag)
         self.canvas.bind("<ButtonRelease-1>", self.end_drag)
 
-        # self.load_btn = tk.Button(master, text="Load Image", command=self.load_image)
-        # self.load_btn.pack(pady=10)
         self.load_image()
 
     def load_image(self):
         filepath = 'puzzle_picture.jpg'
-        # filepath = filedialog.askopenfilename()
-        # if not filepath:
-        #     return
         img = Image.open(filepath).resize((TILE_SIZE * GRID_SIZE, TILE_SIZE * GRID_SIZE))
 
         self.tiles.clear()
@@ -95,7 +90,7 @@ class ImageSwapPuzzleGUI:
             new_row = event.y // TILE_SIZE
             if 0 <= new_row < GRID_SIZE and 0 <= new_col < GRID_SIZE:
                 self.board[old_row][old_col], self.board[new_row][new_col] = self.board[new_row][new_col], \
-                self.board[old_row][old_col]
+                    self.board[old_row][old_col]
             self.drag_data = {"tile": None, "row": None, "col": None}
             self.draw_board()
 
@@ -104,4 +99,3 @@ if __name__ == '__main__':
     root = tk.Tk()
     app = ImageSwapPuzzleGUI(root)
     root.mainloop()
-

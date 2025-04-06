@@ -1,10 +1,10 @@
+import heapq
+import os
+import random
 import shutil
 import tkinter as tk
-# from tkinter import filedialog
+
 from PIL import Image, ImageTk
-import random
-import os
-import heapq
 
 TILE_SIZE = 200
 GRID_SIZE = 4
@@ -30,17 +30,8 @@ class FifteenPuzzleGUI:
 
         self.load_image()
 
-        # self.load_btn = tk.Button(master, text="Load Image", command=self.load_image)
-        # self.load_btn.pack(pady=10)
-
-        # self.solve_btn = tk.Button(master, text="Solve Puzzle", command=self.solve_puzzle)
-        # self.solve_btn.pack(pady=5)
-
     def load_image(self):
         filepath = 'puzzle_picture.jpg'
-        # filepath = filedialog.askopenfilename()
-        # if not filepath:
-        #     return
         img = Image.open(filepath).resize((TILE_SIZE * GRID_SIZE, TILE_SIZE * GRID_SIZE))
 
         self.tiles.clear()
